@@ -7,7 +7,7 @@ import {
 import EuCourses from "./myComponents/EuCourses"
 import MyNav from "./myComponents/MyNav"
 import MyCarousel from "./myComponents/MyCarousel"
-import banner from "./banner.jpg"
+import banner from "./myComponents/img/banner.jpg"
 
 //轮播图的数据
 const items = [
