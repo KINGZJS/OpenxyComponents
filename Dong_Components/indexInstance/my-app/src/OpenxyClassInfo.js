@@ -36,7 +36,18 @@ const OpenxyCardText = styled.p`{
     font-size:0.6rem;
     margin:0.2rem;
 }`;
-
+/**
+ *
+ * 下面两个 OpenxyCardLinkLeft,OpenxyCardLinkRight
+ * 样式差不多
+ *
+ * 可以用styled-component的 继承功能/或参数功能 减少大量代码
+ *
+ * https://www.styled-components.com/docs/basics#getting-started
+ *
+ * Extending Styles一节
+ *
+ * */
 const OpenxyCardLinkLeft = styled.a`{
     float:left;
     font-size:0.6rem;

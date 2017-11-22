@@ -18,7 +18,7 @@ const rowMargin={
 //props:courses
 class EuCourses extends Component{
     render() {
-        return<div>{
+        return <div>{
             this.props.courses.map((rowCourses)=>{
             const rowCoursesList = rowCourses.map((course) => {
                 return (
@@ -37,7 +37,7 @@ class EuCourses extends Component{
                 );
             });
 
-            return(
+            return (
                 <Row style={rowMargin}>{rowCoursesList}</Row>
             );
         })

@@ -31,7 +31,6 @@ const items = [
     }
 ];
 
-
 //课程数据
 const rowCourses=[
     {

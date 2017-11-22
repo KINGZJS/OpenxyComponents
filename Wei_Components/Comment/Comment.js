@@ -13,7 +13,6 @@ class Comment extends Component{
             page:0,//总页数
             current_page:0//当前页数
         }
-
     }
     componentDidMount() {
         fetch('http://119.28.24.179:8081/comments?page=0',{

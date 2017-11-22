@@ -12,6 +12,7 @@ class MyCarousel extends Component {
     constructor(props) {
         super(props);
         this.state = { activeIndex: 0 };
+        // 不要使用bind, 请使用箭头函数,会自动绑定this
         this.next = this.next.bind(this);
         this.previous = this.previous.bind(this);
         this.goToIndex = this.goToIndex.bind(this);
