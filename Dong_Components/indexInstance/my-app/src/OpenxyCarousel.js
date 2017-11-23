@@ -77,12 +77,13 @@ class OpenxyCarousel extends Component {
     render() {
         const { activeIndex } = this.state;
 
-        const slides = items.map((item) => {
+        const slides = items.map((item, index) => {
+            // 请保证key不能相同! 否则只有第一个会被React渲染
             return (
                 <CarouselItem
                     onExiting={this.onExiting}
                     onExited={this.onExited}
-                    key={item.src}
+                    key={item.src+'_carouselItem_'+index}
                     src={item.src}
                     altText={item.altText}
                 >
