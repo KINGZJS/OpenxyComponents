@@ -1,5 +1,5 @@
 import React, {Component} from  'react'
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 class Comment extends Component{
@@ -15,7 +15,7 @@ class Comment extends Component{
         }
     }
     componentDidMount() {
-        fetch('http://119.28.24.179:8081/comments?page=0',{
+        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page=0',{
             method:'get'
         })
             .then(response=>{
@@ -55,7 +55,7 @@ class Comment extends Component{
                 if (result.status==true){
                     alert("发表成功！")
                     //如果在最后一页，用户发表评论，则获取最后一页的评论数据，更新显示
-                    fetch('http://119.28.24.179:8081/comments?page='+this.state.current_page,{
+                    fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page='+this.state.current_page,{
                         method:'get'
                     }).then(response=>{
                         response.json().then(result=>{
@@ -70,7 +70,7 @@ class Comment extends Component{
     }
     //分页功能
     changePage = (e,index) =>{
-        fetch('http://119.28.24.179:8081/comments?page='+index,{
+        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page='+index,{
             method:'get'
         }).then(response=>{
             response.json().then(result=>{

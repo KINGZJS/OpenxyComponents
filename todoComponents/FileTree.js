@@ -90,11 +90,12 @@ const FileTree = props => {
   *
   *
   * */
+  const style={ color:'red'}
   return (<div>
     {/*Tree的基本用法*/}
       <div>
     <Tree showLine>
-      <TreeNode title="OpenxyComponents">
+      <TreeNode title="OpenxyComponents" className="myTree" >
         <TreeNode title="doc"/>
         <TreeNode title="todoComponents">
           <TreeNode title="FileTree.js"/>

@@ -1,5 +1,6 @@
-运行指南
-  1.create-react-app name  新建一个空项目
-  2.删除src下的所有文件
-  3.将index.js和Comment.js两个文件复制进去就行了
+锟斤拷锟斤拷指锟斤拷
+  1.create-react-app name  锟铰斤拷一锟斤拷锟斤拷锟斤拷目
+  2.删锟斤拷src锟铰碉拷锟斤拷锟斤拷锟侥硷拷
+  3.锟斤拷index.js锟斤拷Comment.js锟斤拷锟斤拷锟侥硷拷锟斤拷锟狡斤拷去锟斤拷锟斤拷锟斤拷
 
+// please use UTF-8 encoding in WebStorm, I can't see your Chinese chars
