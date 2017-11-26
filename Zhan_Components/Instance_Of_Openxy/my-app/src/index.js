@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import MainPage from './OpenxyMainPage';
+// import MainPage from './OpenxyMainPage';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import LearningPage from './LearningPage'
 
-ReactDOM.render(<MainPage />, document.getElementById('root'));
+ReactDOM.render(<LearningPage />, document.getElementById('root'));
 registerServiceWorker();
+

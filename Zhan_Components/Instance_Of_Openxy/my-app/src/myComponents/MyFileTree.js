@@ -3,7 +3,7 @@ import Tree from 'rc-tree';  //需要安装这个包 npm install rc-tree --save
 import styled,{keyframes} from 'styled-components';
 
 import 'rc-tree/assets/index.css'; //这里多引入一条基本样式,防止bug
-import './fileTree.css';
+// import './fileTree.css';
 /**
 * API文档:  https://github.com/fis-components/rc-tree
  *
@@ -90,13 +90,14 @@ const FileTree = props => {
   *
   *
   * */
-  const DIVFILETREE = styled.div`
-  li{
-  }
-  ul{
-  
-  }
-  `;
+  // const DIVFILETREE = styled.div`
+  // li{
+  // }
+  // ul{
+  //
+  // }
+  // `;
+
   const style={ color:'red'}
   return (<div>
     {/*Tree的基本用法*/}
@@ -114,17 +115,17 @@ const FileTree = props => {
 
 
     {/*styled-components用法*/}
-    <Rotate>
-      <StyledTree>
-        <TreeNode title="OpenxyComponents">
-          <TreeNode title="doc"/>
-          <TreeNode title="todoComponents">
-            <TreeNode title="FileTree.js"/>
-          </TreeNode>
-          <TreeNode title="README.md"/>
-        </TreeNode>
-      </StyledTree>
-    </Rotate>
+    {/*<Rotate>*/}
+      {/*<StyledTree>*/}
+        {/*<TreeNode title="OpenxyComponents">*/}
+          {/*<TreeNode title="doc"/>*/}
+          {/*<TreeNode title="todoComponents">*/}
+            {/*<TreeNode title="FileTree.js"/>*/}
+          {/*</TreeNode>*/}
+          {/*<TreeNode title="README.md"/>*/}
+        {/*</TreeNode>*/}
+      {/*</StyledTree>*/}
+    {/*</Rotate>*/}
 
 
 
@@ -145,4 +146,4 @@ const FileTree = props => {
 };
 
 
-export default FileTree
+export default FileTree;
