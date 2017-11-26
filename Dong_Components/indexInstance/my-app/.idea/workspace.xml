@@ -41,11 +41,9 @@
       <file leaf-file-name="OpenxyComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OpenxyComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -294,12 +292,12 @@
       <workItem from="1511218933888" duration="7482000" />
       <workItem from="1511227646329" duration="11230000" />
       <workItem from="1511254286681" duration="18003000" />
-      <workItem from="1511693602058" duration="4546000" />
+      <workItem from="1511693602058" duration="5315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57795000" />
+    <option name="totallyTimeSpent" value="58564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -653,11 +651,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OpenxyComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
