@@ -39,7 +39,7 @@ const TreeNode = Tree.TreeNode;
  *
 * */
 const StyledTree = styled(Tree)`
-	background-color: blue;
+	background-olor: blue;
 `;
 /* 让样式变成一个组件 */
 const rotate360 = keyframes`
@@ -90,10 +90,17 @@ const FileTree = props => {
   *
   *
   * */
+  const DIVFILETREE = styled.div`
+  li{
+  }
+  ul{
+  
+  }
+  `;
   const style={ color:'red'}
   return (<div>
     {/*Tree的基本用法*/}
-      <div>
+
     <Tree showLine>
       <TreeNode title="OpenxyComponents" className="myTree" >
         <TreeNode title="doc"/>
@@ -103,7 +110,7 @@ const FileTree = props => {
         <TreeNode title="README.md"/>
       </TreeNode>
     </Tree>
-  </div>
+
 
 
     {/*styled-components用法*/}
