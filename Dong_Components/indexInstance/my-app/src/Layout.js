@@ -45,6 +45,7 @@ const FixedOpenxyNav = styled.div`
     render() {
         return (
             <Container fluid>
+                <FullRow>
                 <Row >
                     <Col>
                         <FixedOpenxyNav>
@@ -52,6 +53,7 @@ const FixedOpenxyNav = styled.div`
                         </FixedOpenxyNav>
                     </Col>
                 </Row>
+                </FullRow>
                 <Row>
                     <Col>
                         <OpenxyCarousel/>
