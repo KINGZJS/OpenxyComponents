@@ -1,19 +1,54 @@
 import React, {Component} from  'react'
-// import ReactDOM from 'react-dom';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-
+import { Pagination, PaginationItem, PaginationLink,Button } from 'reactstrap';
+import Login from './Login'
 class Comment extends Component{
     constructor(){
         super();
         this.state ={
             comments:[],//用户评论数据
-            user_name:'',//用户名
             comment_content:'',
             pages:[],//存放<li>标签
             page:0,//总页数
-            current_page:0//当前页数
+            current_page:0,//当前页数
+            status:true,//是否登陆状态
+            token:'',
+            user_name:'',//用户名
+            user_ID:''
         }
     }
+    judgeLogin=()=>{
+        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token='+localStorage.getItem("token"),{
+            method:'get'
+        }).then(response=>{
+            response.json().then(result=> {
+                if (Object.prototype.toString.call(result.status) === '[object Object]') {
+                    const status = JSON.parse(result.status.message.response.text).status
+                    this.setState({status})
+                }
+                else this.setState({status:result.status})
+            })
+        })
+    }
+    componentWillMount(){
+        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token='+localStorage.getItem("token"),{
+            method:'get'
+        })
+            .then(response=>{
+                response.json().then(result=>{
+                    if (result.message=="refresh token"){
+                        localStorage.removeItem("token")
+                        localStorage.setItem("token",result.token)
+                        this.judgeLogin();
+                    }
+                    else {
+                        if (Object.prototype.toString.call(result.status) === '[object Object]') {
+                            const status = JSON.parse(result.status.message.response.text).status
+                            this.setState({status})
+                            console.log(status)
+                        }
+                        else this.setState({status:result.status})
+                    }
+    })})}
     componentDidMount() {
         fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page=0',{
             method:'get'
@@ -35,38 +70,58 @@ class Comment extends Component{
                     this.setState({page})
                 })
             })
+
     }
     handleClick = () =>{
-        const user_name= this.refs.user_name.value.trim()
-        const comment_content= this.refs.comment_content.value.trim()
-        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comment',{
-            method:'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                user_name: user_name,
-                comment_content: comment_content,
-                user_ID:123123
+        // fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token='+this.state.token,{
+        //     method:'get'
+        // })
+        //     .then(response=>{
+        //         response.json().then(result=>{
+        //             console.log()
+        //             if (Object.prototype.toString.call(result.status) === '[object Object]'){
+        //                 const status = JSON.parse(result.status.message.response.text).status
+        //                 this.setState({status})
+        //             }
+        //             else this.setState({status:result.status})
+        //         })
+        //     })
+        if(this.state.status){
+            const comment_content= this.refs.comment_content.value.trim();
+            let formData = new FormData();
+            formData.append("comment_content","user_name","user_ID");
+            formData.append(comment_content,this.state.user_name,this.state.user_ID);
+            fetch('http://119.28.24.179:8081/authUser',{
+                method:'POST',
+                mode:'CORS',
+                headers: {
+                    'Authorization': 'Bearer '+localStorage.getItem("token"),
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type':'text/plain'
+                },
+                body: formData
+            }).then(response=>{
+                console.log(response)
+                // response.json().then(result=>{
+                //     if (result.status==true){
+                //         alert("发表成功！")
+                //         //如果在最后一页，用户发表评论，则获取最后一页的评论数据，更新显示
+                //         fetch('http://119.28.24.179:8081/comments?page='+this.state.current_page,{
+                //             method:'get'
+                //         }).then(response=>{
+                //             response.json().then(result=>{
+                //                 const comments = result.data
+                //                 this.setState({comments})
+                //             })
+                //         })
+                //     }
+                //
+                // })
+            }).catch(error=>{
+                console.log(error)
             })
-        }).then(response=>{
-            response.json().then(result=>{
-                if (result.status==true){
-                    alert("发表成功！")
-                    //如果在最后一页，用户发表评论，则获取最后一页的评论数据，更新显示
-                    fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page='+this.state.current_page,{
-                        method:'get'
-                    }).then(response=>{
-                        response.json().then(result=>{
-                            const comments = result.data
-                            this.setState({comments})
-                        })
-                    })
-                }
-                else alert("发表失败！")
-            })
-        })
+        }
+        else alert("发表失败！请登陆")
     }
     //分页功能
     changePage = (e,index) =>{
@@ -81,6 +136,18 @@ class Comment extends Component{
                 })
             })
         })
+    }
+    handleSubmit = e=>{
+        e.preventDefault();
+    }
+    getUsermsg = (token,user_name,user_ID,status)=>{
+        this.setState({token,user_name,user_ID,status})
+    }
+    handleLogout = ()=>{
+        if (window.confirm("确定要注销吗？")){
+            localStorage.removeItem("token")
+            this.judgeLogin()
+        }
     }
     render(){
         const {comments} = this.state
@@ -97,19 +164,23 @@ class Comment extends Component{
             }
             return li;
         }
+        const login = ()=>{
+            if (!this.state.status)
+                return <Login size="md" getUsermsg={this.getUsermsg}/>
+            else return <Button onClick={this.handleLogout}>注销</Button>
+        }
             return(
                 <div className="container" style={{width:'500px',position:'relative'} }>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                            <label>
-                                用户名:
-                            </label>
-                            <input type="text" name="user_name" className="form-control" placeholder="用户名" ref="user_name"/>
                             <label>评论:</label>
-                            <textarea className="form-control" name="comment_content" placeholder="留下点痕迹吧！" rows="5" ref="comment_content"></textarea>
+                            <textarea className="form-control" name="comment_content" placeholder="留下点痕迹吧！" required rows="5" ref="comment_content"></textarea>
                         </div>
-                        <input type="reset" style={{cursor:'pointer'}} onClick={this.handleClick} className="btn btn-primary" value="发表评论"/>
+                        <Button type="submit" style={{cursor:'pointer'}} onClick={this.handleClick} className="btn btn-primary">发表评论</Button>
                     </form>
+                    {
+                        login()
+                    }
                     <Pagination>
                         {lis(this.state.page)}
                     </Pagination>
