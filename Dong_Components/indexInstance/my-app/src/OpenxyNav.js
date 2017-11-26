@@ -9,11 +9,6 @@ const OpNav = styled.div`{
      width:100%;
      background-color: #80cbc4;
      opacity: 0.8;
-     position: fixed;
-     top:0rem;
-     z-index: 2;
-     margin-left:-15px;
-     margin-right:-15px;
 }`;
 
 const Logo = styled.img`{

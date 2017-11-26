@@ -34,15 +34,26 @@ const ImgTransition = styled.img`{
     width:5%;
 }`;
 
+const FixedOpenxyNav = styled.div`
+    position: fixed;
+     top:0rem;
+     z-index: 2;
+     width:100%;
+`
+
  class Layout extends React.Component {
     render() {
         return (
             <Container fluid>
+                <FullRow>
                 <Row >
                     <Col>
-                        <OpenxyNav/>
+                        <FixedOpenxyNav>
+                            <OpenxyNav/>
+                        </FixedOpenxyNav>
                     </Col>
                 </Row>
+                </FullRow>
                 <Row>
                     <Col>
                         <OpenxyCarousel/>
