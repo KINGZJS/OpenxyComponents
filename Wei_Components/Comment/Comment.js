@@ -91,12 +91,14 @@ class Comment extends Component{
             let formData = new FormData();
             formData.append("comment_content","user_name","user_ID");
             formData.append(comment_content,this.state.user_name,this.state.user_ID);
-            fetch('http://119.28.24.179:8081/authUser',{
+
+            //problem: https://stackoverflow.com/questions/35841786/response-for-preflight-is-invalid-redirect-error
+
+          fetch('http://119.28.24.179:8081/authUser',{
                 method:'POST',
                 mode:'CORS',
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem("token"),
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type':'text/plain'
                 },
                 body: formData
