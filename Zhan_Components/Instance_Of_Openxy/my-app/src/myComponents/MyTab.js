@@ -5,9 +5,6 @@ import styled from 'styled-components';
 import FileTree from './MyFileTree'
 import MyFileItem from "./MyFileItem";
 
-
-
-
 const StyledTabContent=styled(TabContent)`    
     border:1px solid #ddd;
     border-top:none;
@@ -33,7 +30,7 @@ const addedFiles=[
 ];
 
 
- class MyTab extends React.Component {
+class MyTab extends React.Component {
     constructor(props) {
         super(props);
 
@@ -51,6 +48,7 @@ const addedFiles=[
         }
     }
     render() {
+        const { PropsFileTree } = this.props;
         return (
             <div>
                 <Nav tabs>
@@ -76,7 +74,7 @@ const addedFiles=[
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
-                                    <FileTree/>
+                                  {PropsFileTree}
                                 </Col>
                             </Row>
                         </TabPane>

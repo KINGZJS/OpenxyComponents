@@ -16,7 +16,9 @@ const FullRow = styled.div`{
 }`;
 
 class OpenxyLearningLayout extends React.Component {
+
     render() {
+      const { LeftMenuBox, Children } = this.props;
         return (
             <Container fluid>
                 <FullRow>
@@ -27,9 +29,11 @@ class OpenxyLearningLayout extends React.Component {
                     </Row>
                 </FullRow>
                 <Row>
-                    <Col sm='2'></Col>
+                    <Col sm='2'>
+                      {LeftMenuBox}
+                    </Col>
                     <GrayCol>
-                        <OpenxySubfield/>
+                      {Children()}
                     </GrayCol>
                 </Row>
                 <FullRow>

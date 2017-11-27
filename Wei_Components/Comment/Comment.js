@@ -30,47 +30,54 @@ class Comment extends Component{
         })
     }
     componentWillMount(){
-        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token='+localStorage.getItem("token"),{
-            method:'get'
+    try {
+      // webpack ssr error :fetch is not defined
+      fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token=' + localStorage.getItem("token"), {
+        method: 'get'
+      }).then(response => {
+        response.json().then(result => {
+          if (result.message == "refresh token") {
+            localStorage.removeItem("token")
+            localStorage.setItem("token", result.token)
+            this.judgeLogin();
+          }
+          else {
+            if (Object.prototype.toString.call(result.status) === '[object Object]') {
+              const status = JSON.parse(result.status.message.response.text).status
+              this.setState({status})
+              console.log(status)
+            }
+            else this.setState({status: result.status})
+          }
         })
-            .then(response=>{
-                response.json().then(result=>{
-                    if (result.message=="refresh token"){
-                        localStorage.removeItem("token")
-                        localStorage.setItem("token",result.token)
-                        this.judgeLogin();
-                    }
-                    else {
-                        if (Object.prototype.toString.call(result.status) === '[object Object]') {
-                            const status = JSON.parse(result.status.message.response.text).status
-                            this.setState({status})
-                            console.log(status)
-                        }
-                        else this.setState({status:result.status})
-                    }
-    })})}
-    componentDidMount() {
-        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page=0',{
-            method:'get'
-        })
-            .then(response=>{
-                response.json().then(result=>{
-                    const comments = result.data
-                    this.setState({
-                        comments
-                    })
-                })
-            })
-        fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/page',{
-            method:'get'
-        })
-            .then(response=>{
-                response.json().then(result=>{
-                    const page = result.count
-                    this.setState({page})
-                })
-            })
+      })
+    }catch (e){
 
+      }
+    }
+    componentDidMount() {
+        if(fetch) {
+          fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/comments?page=0', {
+            method: 'get'
+          })
+              .then(response => {
+                response.json().then(result => {
+                  const comments = result.data
+                  this.setState({
+                    comments
+                  })
+                })
+              })
+          fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8081/page', {
+            method: 'get'
+          })
+              .then(response => {
+                response.json().then(result => {
+                  const page = result.count
+                  this.setState({page})
+                })
+              })
+        }
     }
     handleClick = () =>{
         // fetch('https://bird.ioliu.cn/v1?url=http://119.28.24.179:8082/user?token='+this.state.token,{

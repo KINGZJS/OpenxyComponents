@@ -66,6 +66,7 @@ const OpenxyButton = styled(Button)`
 
 export default class OpenxySubfield extends React.Component{
     render(){
+        const { SubLeftContent, SubRightContent } = this.props;
         return (
             <Subfield>
                 <ul>
@@ -78,7 +79,7 @@ export default class OpenxySubfield extends React.Component{
                         </div>
                         <hr/>
                             <div>
-                                <p>假装有内容</p>
+                              {SubLeftContent}
                             </div>
                     </Left>
                     <Label></Label>
@@ -88,7 +89,7 @@ export default class OpenxySubfield extends React.Component{
                         </h5>
                         <hr/>
                             <div>
-                                <p>拖动中间的条条可以改变两个栏目的大小</p>
+                              {SubRightContent}
                             </div>
                     </Right>
                 </ul>
