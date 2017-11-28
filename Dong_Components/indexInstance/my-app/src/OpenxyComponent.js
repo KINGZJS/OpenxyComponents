@@ -5,6 +5,9 @@ import OpenxyLearning from './OpenxyLearningLayout';
 import OpenxyNav from './OpenxyNav';
 import OpenxySubfield from './OpenxySubfield';
 import Layout from './Layout'
+import Comment from './Comment'
+import Login from './Login'
+import Register from './Register'
 
 
 export default {
@@ -14,5 +17,8 @@ export default {
   OpenxyNav,
   OpenxyFooter,
   OpenxyLearning,
-  Layout
+  Layout,
+    Comment,
+    Login,
+    Register
 };
