@@ -22,12 +22,16 @@ const CommentDiv = styled.div`
 `;
 
 const CommentButton = styled(Button)`
-    width:4rem;
     font-size:0.6rem;
-    // float:left;
     margin-top:0.8rem;
     margin-right:0.5rem;
     display:inline-block;
+`;
+
+const LogoutButton = CommentButton.extend`
+    float:right;
+    margin-top:-2.9rem;
+    margin-right:3rem;
 `;
 
 const Hr = styled.hr`
@@ -240,7 +244,7 @@ class Comment extends Component{
         const login = ()=>{
             if (!this.state.status)
                 return <Login size="md" getUsermsg={this.getUsermsg}/>
-            else return <Button onClick={this.handleLogout}>注销</Button>
+            else return <LogoutButton onClick={this.handleLogout}>注销</LogoutButton>
         }
             return(
                 <CommentDiv>

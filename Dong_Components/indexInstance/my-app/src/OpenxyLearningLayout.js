@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import OpenxyNav from './OpenxyNav';
 import OpenxyFooter from './OpenxyFooter';
 import OpenxySubfield from './OpenxySubfield';
+import Comment from "./Comment";
 
 const GrayCol = styled(Col)`
     background-color:gray;
@@ -36,11 +37,12 @@ class OpenxyLearningLayout extends React.Component {
                 </FullRow>
                 <Row>
                     <Col sm='2'>
-                      {LeftMenuBox}
+                      {/*{LeftMenuBox}*/}
                     </Col>
                     <GrayCol>
-                      {Children()}
-                        {Comment()}
+                      {/*{Children()}*/}
+                        {/*{Comment()}*/}
+                        <Comment/>
                     </GrayCol>
                 </Row>
                 <FullRow>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Subfield = styled.div`
     width: 100%;
-	height: 35rem;
 	clear:both;
 	margin-top:1rem;
 	border:1px solid white;
@@ -15,13 +14,11 @@ const Subfield = styled.div`
 	list-style: none;
 	margin:0rem;
 	padding-left: 0rem;
-}
+    }
 
    li{
 	float: left;
-	height: 35rem;
-	overflow: hidden;
-	text-align: center;
+	text-align: left;
 	line-height: 2rem;
 	margin:0rem;
 }
@@ -39,10 +36,9 @@ const Left = styled.li`
 	}
 `;
 
-const Label = styled.label`
+const Label = styled.li`
     float: left;
 	width: 0.5%;
-	height: 35rem;
 	cursor: e-resize;
 	background: #004d40;
 `;
