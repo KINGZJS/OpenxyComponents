@@ -4,7 +4,6 @@ import Register from './Register'
 import styled from 'styled-components'
 
 const LoginButton = styled(Button)`
-     width:4rem;
     font-size:0.6rem;
     float:right;
     margin-top:-2.9rem;
