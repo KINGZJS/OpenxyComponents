@@ -6,8 +6,8 @@ import FileTree from './MyFileTree'
 import MyFileItem from "./MyFileItem";
 
 const StyledTabContent=styled(TabContent)`    
-    border:1px solid #ddd;
-    border-top:none;
+    // border:1px solid #ddd;
+    // border-top:none;
     padding:5px;
     text-align:center;
 `;
@@ -28,6 +28,21 @@ const modifiedFiles=[
 const addedFiles=[
     {name:'f1'}
 ];
+
+
+const StyledTabPane=styled(TabPane)`
+    text-align:left;
+`;
+
+const StyledNavItem=styled(NavItem)`
+    width:50%;
+`;
+
+const StyledNavLink=styled(NavLink)`
+    width:100%;
+    text-align:center;
+`;
+
 
 
 class MyTab extends React.Component {
@@ -52,32 +67,33 @@ class MyTab extends React.Component {
         return (
             <div>
                 <Nav tabs>
-                    <NavItem>
-                        <NavLink
+                    <StyledNavItem>
+                        <StyledNavLink
                             className={classnames({ active: this.state.activeTab === '1' })}
                             onClick={() => { this.toggle('1'); }}
                         >
                             Course Tree
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink
+                        </StyledNavLink>
+                    </StyledNavItem>
+                    <StyledNavItem>
+                        <StyledNavLink
                             className={classnames({ active: this.state.activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}
                         >
                             Related Files
-                        </NavLink>
-                    </NavItem>
+                        </StyledNavLink>
+                    </StyledNavItem>
                 </Nav>
                 <StyledTabContent>
                     <TabContent activeTab={this.state.activeTab}>
-                        <TabPane tabId="1">
+                        <StyledTabPane tabId="1">
                             <Row>
                                 <Col sm="12">
                                   {PropsFileTree}
+                                  <FileTree/>
                                 </Col>
                             </Row>
-                        </TabPane>
+                        </StyledTabPane>
                         <TabPane tabId="2">
                             <Row>
                                 <Col sm="12">
