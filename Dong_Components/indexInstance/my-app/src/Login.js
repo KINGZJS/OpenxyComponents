@@ -1,14 +1,12 @@
 import React, {Component} from  'react'
-import {Container, Button, Modal, ModalHeader, ModalBody,Form,FormGroup, Input} from 'reactstrap'
+import {Container, Button, Modal, ModalHeader, ModalBody,Form,FormGroup, Input,Row,Col} from 'reactstrap'
 import Register from './Register'
 import styled from 'styled-components'
 
 const LoginButton = styled(Button)`
     font-size:0.6rem;
-    float:right;
-    margin-top:-2.9rem;
+    margin-top:-6rem;
     display:inline-block;
-    margin-right:2.1rem;
 `;
 
 class Login extends Component{
@@ -63,7 +61,10 @@ class Login extends Component{
     render(){
             return(
                 <Container>
-                    <LoginButton style={{cursor:'pointer'}} outline color="danger" onClick={this.toggle}>登陆</LoginButton>
+                    <Row>
+                        <Col xs="9"></Col>
+                        <Col xs="3"><LoginButton style={{cursor:'pointer'}} outline color="danger" onClick={this.toggle}>登陆</LoginButton></Col>
+                    </Row>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>登陆</ModalHeader>
                         <ModalBody>

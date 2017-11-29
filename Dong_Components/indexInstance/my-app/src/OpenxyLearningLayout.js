@@ -42,6 +42,7 @@ class OpenxyLearningLayout extends React.Component {
                     <GrayCol>
                       {/*{Children()}*/}
                         {/*{Comment()}*/}
+                        <OpenxySubfield/>
                         <Comment/>
                     </GrayCol>
                 </Row>

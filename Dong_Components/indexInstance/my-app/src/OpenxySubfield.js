@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button ,Row,Col} from 'reactstrap';
 import styled from 'styled-components';
 
 const Subfield = styled.div`
     width: 100%;
+    min-height: 10rem;
 	clear:both;
 	margin-top:1rem;
 	border:1px solid white;
@@ -19,8 +20,11 @@ const Subfield = styled.div`
    li{
 	float: left;
 	text-align: left;
+	min-height: 10rem;
 	line-height: 2rem;
 	margin:0rem;
+	font-size:0.6rem;
+
 }
 `;
 
@@ -30,14 +34,11 @@ const Left = styled.li`
 	
 	h5{
 	    display:inline-block;
-	    position:relative;
-	    top:0.5rem;
-	    left:14%;
+	    margin-top:0.5rem;
 	}
 `;
 
 const Label = styled.li`
-    float: left;
 	width: 0.5%;
 	cursor: e-resize;
 	background: #004d40;
@@ -48,16 +49,16 @@ const Right = styled.li`
 	width: 50%;
 	
 	h5{
-	    margin-top:0.7rem;
+	    margin-top:0.5rem;
 	}
 `;
 
 const OpenxyButton = styled(Button)`
-    width:4rem;
     font-size:0.6rem;
-    float:right;
-    margin-top:0.8rem;
-    margin-right:0.5rem;
+`;
+
+const Hr = styled.hr`
+    margin:0;
 `;
 
 export default class OpenxySubfield extends React.Component{
@@ -67,23 +68,35 @@ export default class OpenxySubfield extends React.Component{
             <Subfield>
                 <ul>
                     <Left>
-                        <div>
-                            <h5>
-                                Difference
-                            </h5>
-                            <OpenxyButton outline color="info" size="sm">分栏显示</OpenxyButton>
-                        </div>
-                        <hr/>
+                        <Row>
+                            <Col xs="4"></Col>
+                            <Col xs="4">
+                                <h5>
+                                    Difference
+                                </h5>
+                            </Col>
+                            <Col xs="4">
+                                <OpenxyButton outline color="info" size="sm">分栏显示</OpenxyButton>
+                            </Col>
+                        </Row>
+                        <Hr/>
                             <div>
                               {SubLeftContent}
                             </div>
                     </Left>
                     <Label></Label>
                     <Right>
-                        <h5>
-                            Tutorial
-                        </h5>
-                        <hr/>
+                        <Row>
+                            <Col xs="4"></Col>
+                            <Col xs="4">
+                                <h5>
+                                    Tutorial
+                                </h5>
+                            </Col>
+                            <Col xs="4">
+                            </Col>
+                        </Row>
+                        <Hr/>
                             <div>
                               {SubRightContent}
                             </div>

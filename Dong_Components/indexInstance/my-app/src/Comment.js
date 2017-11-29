@@ -1,10 +1,9 @@
 import React, {Component} from  'react'
-import { Pagination, PaginationItem, PaginationLink,Button } from 'reactstrap';
+import { Pagination, PaginationItem, PaginationLink,Button,Row,Col } from 'reactstrap';
 import Login from './Login'
 import styled from 'styled-components'
 
 const Label = styled.div`
-    // float:left;
     font-family:'仿宋';
     font-size:1rem;
     color:#004d40;
@@ -29,9 +28,7 @@ const CommentButton = styled(Button)`
 `;
 
 const LogoutButton = CommentButton.extend`
-    float:right;
-    margin-top:-2.9rem;
-    margin-right:3rem;
+    margin-top:-6rem;
 `;
 
 const Hr = styled.hr`
@@ -52,7 +49,6 @@ const UserName = styled.p`
 `;
 
 const CommentTime = UserName.extend`
-    float:right;
     font-size:0.6rem;
 `;
 
@@ -62,7 +58,6 @@ const CommentContent = styled.p`
 `;
 
 const Page = styled.div`
-    float:right;
     margin-top:0.5rem;
     
     .page-link{
@@ -244,7 +239,12 @@ class Comment extends Component{
         const login = ()=>{
             if (!this.state.status)
                 return <Login size="md" getUsermsg={this.getUsermsg}/>
-            else return <LogoutButton onClick={this.handleLogout}>注销</LogoutButton>
+            else return (
+                <Row>
+                    <Col xs="9"></Col>
+                    <Col xs="3"><LogoutButton onClick={this.handleLogout}>注销</LogoutButton></Col>
+                </Row>
+            )
         }
             return(
                 <CommentDiv>
@@ -258,7 +258,12 @@ class Comment extends Component{
                                                 <UserName>用户名:{comment.user_name}</UserName>
                                                 <Hr/>
                                                 <CommentContent>{comment.comment_content}</CommentContent>
-                                                <CommentTime>{comment.comment_time}</CommentTime>
+                                                <Row>
+                                                    <Col xs={9}></Col>
+                                                    <Col xs={3}>
+                                                        <CommentTime>{comment.comment_time}</CommentTime>
+                                                    </Col>
+                                                </Row>
                                             </div>
                                         </div>
                                     )
@@ -266,11 +271,16 @@ class Comment extends Component{
                         }
                     </UserComment>
 
-                    <Page>
-                        <Pagination>
-                            {lis(this.state.page)}
-                        </Pagination>
-                    </Page>
+                    <Row>
+                        <Col xs="4"></Col>
+                        <Col xs="8">
+                            <Page>
+                                <Pagination>
+                                    {lis(this.state.page)}
+                                </Pagination>
+                            </Page>
+                        </Col>
+                    </Row>
 
                     <CommentForm onSubmit={this.handleSubmit}>
                         <textarea className="form-control" name="comment_content" placeholder="Say something！" required rows="5" ref="comment_content"></textarea>
